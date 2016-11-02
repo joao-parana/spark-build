@@ -40,9 +40,19 @@ protocolo instalado no seu ambiente execute:
 No caso de desejar uma distribuição diferente da versão 2.5.0 use o 
 flag `-Dyarn.version=VERSÃO` onde VERSÃO deve ser superior a 2.2.0
 
-**Resumindo:** Usando o comando mostrado abaixo
+A propósito, o Build do Spark necessita de um pacote instalado no **R**. 
+Para isso use o comando abaixo na console do **R**.
+
+```r
+install.packages("roxygen2")
+```
+
+**Resumindo:** 
+
+Usando os comandos mostrado abaixo
 
 ```bash
+cd 2.0.1/spark-2.0.1
 ./dev/make-distribution.sh --name custom-spark --tgz -Psparkr -Phadoop-2.7 -Phadoop-provided -Phive -Phive-thriftserver -Pyarn
 ```
 
