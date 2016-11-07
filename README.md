@@ -56,11 +56,11 @@ cd 2.0.1/spark-2.0.1
 ./dev/make-distribution.sh --name custom-spark --tgz -Psparkr -Phadoop-2.7 -Phadoop-provided -Phive -Phive-thriftserver -Pyarn
 ```
 
-geramos o arquivo `spark-2.0.1-bin-custom-spark-hadoop-2.7.3.tgz` 
+geramos o arquivo `spark-2.0.1-bin-custom-spark.tgz` 
 no diretório corrente, que pode ser expandido assim:
 
 ```bash
-tar -xzvf spark-2.0.1-bin-custom-spark-hadoop-2.7.3.tgz
+tar -xzvf spark-2.0.1-bin-custom-spark.tgz
 ```
 
 Após a expansão você poderá conferir o arquivo `spark-2.0.1-bin-custom-spark/RELEASE`
@@ -76,9 +76,17 @@ Para Instalar no host desejado copie o arquivo da distribuição gerada para
 o diretório `/tmp` do host e faça o seguinte:
 
 ```bash
-sudo tar -C /usr/local/ -xzf /tmp/spark-2.0.1-bin-custom-spark-hadoop-2.7.3.tgz && \
+sudo tar -C /usr/local/ -xzf /tmp/spark-2.0.1-bin-custom-spark.tgz && \
 du -k /usr/local/spark-2.0.1-bin-custom-spark | sort -n | tail && \
 sudo rm -rf /usr/local/spark && \
 sudo mv /usr/local/spark-2.0.1-bin-custom-spark /usr/local/spark && \
 sudo chown -R hduser:hadoop /usr/local/spark 
 ```
+
+Para verificar se você está usando a versão correta do Hadoop no Host onde está instalado o Spark execute o comando:
+
+```bash
+ls -la /usr/local/hadoop/share/hadoop/hdfs/hadoop-hdfs-*
+```
+
+Isso deverá listar os arquivos JAR das versões instaladas. Por exemplo: `hadoop-hdfs-2.7.3.jar` 
